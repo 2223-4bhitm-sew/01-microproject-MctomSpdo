@@ -1,0 +1,53 @@
+@startuml
+
+left to right direction
+
+class User {
+    <u>UserID: int</u>
+    ..
+    username: varchar(30) [unique]
+    desc: varchar(300)
+    gender: varchar(1)
+    profilePicturePath: varchar(30)
+    createdOn: dateTime
+    --
+    email: varchar(254)
+    --
+    password: hashValue
+    deleted: tinyint
+    lastLogin: dateTime
+    lastLoginTry: dateTime
+}
+
+class Ingredients {
+    <u>IngredientID</u>
+    name: varchar(30)
+}
+
+class Recipe {
+    <u>RecipeID</u>
+    ..
+    imagePath: varchar(60)
+    title: varchar(30)
+    desc: varchar(2000)
+    postedOn: dateTime
+    --
+    <w>from: User</w>
+    isDeleted: tinyint
+}
+
+class RecipeSaved {
+    <u>RecipeSavedID</u>
+    ..
+    <w>Owner: User</w>
+    <w>Post: Post</w>
+}
+
+User "1" -- "*" Recipe
+User "1" -- "*" RecipeSaved
+
+Recipe "*"--"*" Ingredients
+(Recipe, Ingredients) -- Recipe_Ingredients
+Recipe "1" -- "*" RecipeSaved
+
+@enduml
