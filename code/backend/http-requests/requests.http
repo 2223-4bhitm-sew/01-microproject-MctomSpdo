@@ -1,0 +1,155 @@
+### 1. GET /api/auction/get-running
+
+GET http://localhost:8080/api/auction/get-running
+
+### Lösung
+
+#[
+#  {
+#    "bids": 2,
+#    "endTs": "2022-12-10T12:00:00",
+#    "id": 2001,
+#    "name": "Raspberry PI 4, 4MB",
+#    "price": 27.0
+#  },
+#  {
+#    "bids": 0,
+#    "endTs": "2022-12-20T12:00:00",
+#    "id": 2002,
+#    "name": "Wireless Keyboard, Logitech",
+#    "price": 1.0
+#  }
+#]
+
+
+### 2. GET /api/auction/<auctionId>
+
+GET http://localhost:8080/api/auction/2001
+Accept: application/json
+
+### Lösung
+
+#{
+#  "endTs": "2022-12-10T12:00:00",
+#  "id": 2001,
+#  "product": {
+#    "description": "Raspberry mit 4 MB RAM, ohne Gehäuse, ohne Netzteil",
+#    "id": 1000,
+#    "name": "Raspberry PI 4, 4MB"
+#  },
+#  "seller": {
+#    "id": 1002,
+#    "city": "Wien",
+#    "firstname": "Hans",
+#    "houseno": "34/5",
+#    "lastname": "Huber",
+#    "street": "Hagelweg",
+#    "zip": "1010"
+#  },
+#  "startPrice": 1.0,
+#  "startTs": "2021-12-07T08:00:00"
+#}
+
+
+### 3. GET /api/bid/last-for-auction/<auctionId>
+
+GET http://localhost:8080/api/bid/last-for-auction/2001
+Accept: application/json
+
+### Lösung
+
+#[
+#  {
+#    "id": 10002,
+#    "amount": 27.0,
+#    "timestamp": "2021-12-07T09:10:00",
+#    "user": {
+#      "id": 1001,
+#      "city": "Salzburg",
+#      "firstname": "Susi",
+#      "houseno": "234",
+#      "lastname": "Sonne",
+#      "street": "Sonnenweg",
+#      "zip": "5020"
+#    }
+#  },
+#  {
+#    "id": 10001,
+#    "amount": 3.0,
+#    "timestamp": "2021-12-07T09:00:00",
+#    "user": {
+#      "id": 1000,
+#      "city": "Linz",
+#      "firstname": "Max",
+#      "houseno": "123",
+#      "lastname": "Muster",
+#      "street": "Testweg",
+#      "zip": "4020"
+#    }
+#  }
+#]
+
+
+### 4. POST /api/bid
+
+POST http://localhost:8080/api/bid
+Content-Type: application/json
+
+{
+  "auctionId": 2001,
+  "amount": 400,
+  "userId": 1000
+}
+
+### Lösung (in Tabelle BID wird ein DS inserted)
+
+# HTTP/1.1 201 Created
+# Content-Type: application/json
+# Location: http://localhost:8080/api/bid/1
+# Content-Length: 183
+#
+# {
+#   "id": 1,
+#   "amount": 400.0,
+#   "timestamp": "2022-03-10T20:26:56.703323",
+#   "user": {
+#     "id": 1000,
+#     "city": "Linz",
+#     "firstname": "Max",
+#     "houseno": "123",
+#     "lastname": "Muster",
+#     "street": "Testweg",
+#     "zip": "4020"
+#   }
+# }
+
+
+### 5. POST /api/auction/import-for-user/<userId>
+
+POST http://localhost:8080/api/auction/import-for-user/1000
+Content-Type: text/plain
+
+"START";"END";"START_PRICE";"PRODUCTNAME";"DESCRIPTION"
+01.01.2022 00:00:00;10.06.2022 08:00:00;1;"Kabellose Maus";"Kabellose Maus ohne Batterien"
+01.01.2022 00:00:00;08.06.2022 17:00:00;49;"Drucker EPSON XP-123";"Multifunktionsgerät - Scannen, Kopieren und Drucken in einem Gerät"
+02.01.2022 00:00:00;12.06.2022 19:00:00;9;"Headset Pro";"Headset kabelgebunden"
+03.01.2022 00:00:00;11.06.2022 20:00:00;49;"Drucker EPSON XP-123";"Multifunktionsgerät - Scannen, Kopieren und Drucken in einem Gerät"
+04.01.2022 00:00:00;12.06.2022 20:00:00;55;"Monitor Acer 24-321";"24 Zoll Monitor"
+
+### Lösung (in Tabelle AUCTION werden 5 DS inserted)
+
+# HTTP/1.1 200 OK
+# Content-Type: text/plain;charset=UTF-8
+# Content-Length: 33
+#
+# CSV imported... Processed 5 lines
+
+### 5. POST (in anderer Reihenfolge und mit Komma anstelle Semikolon als Trennzeichen)
+
+POST http://localhost:8080/api/auction/import-for-user/1000
+Content-Type: text/plain
+
+"START_PRICE","PRODUCTNAME","DESCRIPTION","START","END"
+100,"Magic Keyboard","Kabellose Tastatur - wiederaufladbar",01.03.2022 00:00:00,10.06.2022 08:00:00
+49,"Bluetooth Lautsprecher","mit speziellem Bass",10.02.2022 00:00:00,08.06.2022 17:00:00
+
