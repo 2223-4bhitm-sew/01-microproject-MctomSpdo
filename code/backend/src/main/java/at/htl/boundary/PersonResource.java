@@ -45,14 +45,6 @@ public class PersonResource {
                 .findFirst()
                 .get();
         logger.info(foundPerson.getFirstName());
-        //Person foundPerson = persons.get(0);
-        //assert foundPerson != null;
-        foundPerson.setFirstName("updated");
-//        if (foundPerson.isEmpty()) {
-//            logger.info("is empty");
-//        } else {
-//            logger.info("is not empty");
-//        }
         return Response.ok(foundPerson).build();
     }
 

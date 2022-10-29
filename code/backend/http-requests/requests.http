@@ -1,21 +1,21 @@
-GET http://localhost:8080/person
+GET http://localhost:8080/api/user
 
 ###
 
-POST http://localhost:8080/api/person
+POST http://localhost:8080/api/user
 Content-Type: application/json
 
 {
-  "firstName": "Susi",
-  "lastName": "Mayr"
+  "username": "MctomSpdo",
+  "desc": "My description",
+  "gender": "m",
+  "profilePicturePath": "MctomSpdo-image.png",
+  "email": "mctom.spdo@gmail.com",
+  "passwordHashValue": "358af81c50e54be08d4b1102656fc836a6e4446a",
+  "isDeleted": 0
 }
 
 ###
-
-PATCH http://localhost:8080/person
-Content-Type: text/plain
-
-Susi
 
 ###
 
