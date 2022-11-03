@@ -1,4 +1,4 @@
-# primer Project
+# Microproject
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
