@@ -10,7 +10,9 @@ Cook what you want, based on what you got!
 * Class: 4BHITM
 * Year: 2022/23
 
-https://github.com/2223-4bhitm-sew/01-microproject-MctomSpdo
+[Github Repository](https://github.com/2223-4bhitm-sew/01-microproject-MctomSpdo)
+
+[Docs](https://2223-4bhitm-sew.github.io/01-microproject-MctomSpdo/)
 
 ## Technologies used:
 
