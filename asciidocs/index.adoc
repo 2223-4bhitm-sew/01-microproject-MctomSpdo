@@ -1,9 +1,12 @@
 = Mikroprojekt Rezeptseite
+Thomas Spindler
 :icons: font
 :toc: left
 ifndef::imagesdir[:imagesdir: images]
 
 == Database
+
+=== Database structure
 
 [plantuml, db-structure]
 ----
