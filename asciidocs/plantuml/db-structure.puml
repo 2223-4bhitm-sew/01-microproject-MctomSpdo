@@ -32,7 +32,7 @@ class Recipe {
     desc: varchar(2000)
     postedOn: dateTime
     --
-    <w>from: User</w>
+    from: User
     isDeleted: tinyint
 }
 
@@ -41,6 +41,14 @@ class RecipeSaved {
     ..
     <w>Owner: User</w>
     <w>Post: Post</w>
+}
+
+class Recipe_Ingredients {
+    <u>Recipe_IngredientsID</u>
+    amount: number
+    --
+    owner: Recipe
+    child: Ingredients
 }
 
 User "1" -- "*" Recipe
