@@ -1,6 +1,5 @@
 package at.htl.boundary;
 
-import at.htl.entity.Person;
 import at.htl.entity.User;
 import org.jboss.logging.Logger;
 
@@ -34,9 +33,9 @@ public class UserResource {
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response delete(Person person) {
+    public Response delete(User user) {
         if(users.size() > 0) {
-            users.remove(person);
+            users.remove(user);
         }
         return Response.noContent().build();
     }

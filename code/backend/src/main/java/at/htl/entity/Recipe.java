@@ -1,7 +1,7 @@
 package at.htl.entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "RECIPE")
@@ -22,10 +22,12 @@ public class Recipe {
     private String imgPath;
 
     @Column(name = "RECIPE_POSTEDON")
-    private LocalDate postedOn;
+    private Date postedOn;
 
-    /*@Column(name = "RECIPE_AUTHOR")
-    private User author; */
+    @Column(name = "RECIPE_AUTHOR")
+    @PrimaryKeyJoinColumn
+    @OneToOne
+    private User author;
 
     @Column(name = "RECIPE_VISIBILITY")
     private boolean visibility;
