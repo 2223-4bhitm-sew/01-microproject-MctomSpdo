@@ -10,13 +10,10 @@ public class RecipeIngredients {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "RECIPE")
     @PrimaryKeyJoinColumn
     @OneToOne
     private Recipe recipe;
 
-
-    @Column(name = "INGREDIENT")
     @PrimaryKeyJoinColumn
     @OneToOne
     private Ingredient ingredient;

@@ -24,7 +24,6 @@ public class Recipe {
     @Column(name = "RECIPE_POSTEDON")
     private Date postedOn;
 
-    @Column(name = "RECIPE_AUTHOR")
     @PrimaryKeyJoinColumn
     @OneToOne
     private User author;
