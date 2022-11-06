@@ -14,6 +14,15 @@ public class RecipeSaved {
     @PrimaryKeyJoinColumn
     @OneToOne
     private User owner;
+    //TODO: find exact error causing this, help needed
+
+    /*
+    sorry for this mess :(
+
+    links:
+    - https://stackoverflow.com/questions/32123723/many-to-one-attribute-type-should-not-be-persistence-entity
+    - https://vladmihalcea.com/the-best-way-to-map-a-onetoone-relationship-with-jpa-and-hibernate/
+     */
 
     @PrimaryKeyJoinColumn
     @OneToOne
