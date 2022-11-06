@@ -11,12 +11,10 @@ public class RecipeSaved {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "OWNER")
     @PrimaryKeyJoinColumn
     @OneToOne
     private User owner;
 
-    @Column(name = "SAVES")
     @PrimaryKeyJoinColumn
     @OneToOne
     private Recipe saves;
