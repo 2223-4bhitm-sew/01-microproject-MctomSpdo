@@ -14,7 +14,7 @@ import java.util.Objects;
         )
 })
 @Entity
-@Table(name = "USER")
+@Table(name = "PLATFORM_USER")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="USER_ID")
