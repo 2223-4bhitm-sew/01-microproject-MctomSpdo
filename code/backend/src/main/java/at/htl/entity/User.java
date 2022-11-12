@@ -3,6 +3,16 @@ package at.htl.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "User.findAll",
+                query = "select u from User u"
+        ),
+        @NamedQuery(
+                name = "User.findByUserName",
+                query = "select u from User u where u.username like :NAME"
+        )
+})
 @Entity
 @Table(name = "USER")
 public class User {

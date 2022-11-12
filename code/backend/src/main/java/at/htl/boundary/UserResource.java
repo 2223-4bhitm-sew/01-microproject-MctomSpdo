@@ -1,5 +1,6 @@
 package at.htl.boundary;
 
+import at.htl.control.UserRepository;
 import at.htl.entity.User;
 import org.jboss.logging.Logger;
 
@@ -16,12 +17,33 @@ public class UserResource {
     @Inject
     Logger logger;
 
+    @Inject
+    UserRepository userRepository;
+
     private List<User> users = new LinkedList<>();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<User> findAll() {
-        return users;
+        return userRepository.findAll();
+    }
+
+    @GET
+    @Path("id")
+    @Produces(MediaType.APPLICATION_JSON)
+    public User findById(
+            @PathParam("id") long id
+    ) {
+        return userRepository.findById(id);
+    }
+
+    @GET
+    @Path("username")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> findById(
+            @QueryParam("username") String username
+    ) {
+        return userRepository.findByUserName(username);
     }
 
     @POST
