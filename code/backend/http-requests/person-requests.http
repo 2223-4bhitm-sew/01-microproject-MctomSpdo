@@ -19,10 +19,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:8080/person
-Content-Type: application/json
+DELETE http://localhost:8080/api/user
+Content-Type: text/plain
 
-{
-"firstName": "Susi",
-"lastName": "Mayr"
-}
+2
