@@ -48,6 +48,15 @@ public class UserResource {
         return userRepository.findByUserName(username);
     }
 
+    @GET
+    @Path("email")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<User> findByEmail(
+            @QueryParam("email") String email
+    ) {
+        return userRepository.findByEmail(email);
+    }
+
     @POST
     @Transactional
     @Consumes(MediaType.APPLICATION_JSON)

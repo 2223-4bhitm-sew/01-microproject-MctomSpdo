@@ -37,6 +37,13 @@ public class UserRepository {
         return query.getResultList();
     }
 
+    public List<User> findByEmail(String email) {
+        TypedQuery<User> query = em
+                .createNamedQuery("User.findByEmail", User.class)
+                .setParameter("EMAIL", email);
+        return query.getResultList();
+    }
+
     /**
      * deletes a given User from the db
      * @param user User to delete

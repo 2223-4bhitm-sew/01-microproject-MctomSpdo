@@ -2,6 +2,14 @@ GET http://localhost:8080/api/user
 
 ###
 
+GET http://localhost:8080/api/user/username?username=MctomSpdo
+
+###
+
+GET http://localhost:8080/api/user/email?email=mctom.spdo@gmail.com
+
+###
+
 POST http://localhost:8080/api/user
 Content-Type: application/json
 
@@ -14,8 +22,6 @@ Content-Type: application/json
   "passwordHashValue": "358af81c50e54be08d4b1102656fc836a6e4446a",
   "isDeleted": 0
 }
-
-###
 
 ###
 

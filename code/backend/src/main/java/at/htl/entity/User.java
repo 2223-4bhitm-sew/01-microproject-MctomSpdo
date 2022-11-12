@@ -11,6 +11,10 @@ import java.util.Objects;
         @NamedQuery(
                 name = "User.findByUserName",
                 query = "select u from User u where u.username like :NAME"
+        ),
+        @NamedQuery(
+                name = "User.findByEmail",
+                query = "select u from User u where u.email like :EMAIL"
         )
 })
 @Entity
