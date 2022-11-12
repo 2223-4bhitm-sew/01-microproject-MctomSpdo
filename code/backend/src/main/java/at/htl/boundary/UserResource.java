@@ -70,11 +70,21 @@ public class UserResource {
         return Response.created(location).build();
     }
 
+    @PATCH
+    @Transactional
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response patch (User user) {
+        userRepository.merge(user);
+        return Response.accepted().build();
+    }
+
     @DELETE
     @Transactional
     @Consumes(MediaType.TEXT_PLAIN)
     public Response delete(long id) {
-        userRepository.deleteUserById(id);
-        return Response.noContent().build();
+        if(userRepository.deleteUserById(id)) {
+            return Response.noContent().build();
+        }
+        return Response.notModified().build();
     }
 }

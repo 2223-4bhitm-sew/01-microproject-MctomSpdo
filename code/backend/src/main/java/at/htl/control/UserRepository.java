@@ -44,6 +44,10 @@ public class UserRepository {
         return query.getResultList();
     }
 
+    public User merge(User user) {
+        return em.merge(user);
+    }
+
     /**
      * deletes a given User from the db
      * @param user User to delete

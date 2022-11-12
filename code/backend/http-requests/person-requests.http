@@ -29,3 +29,19 @@ DELETE http://localhost:8080/api/user
 Content-Type: text/plain
 
 2
+
+###
+
+PATCH http://localhost:8080/api/user
+Content-Type: application/json
+
+{
+  "id": 1,
+  "username": "changed",
+  "desc": "My description",
+  "gender": "m",
+  "profilePicturePath": "MctomSpdo-image.png",
+  "email": "mctom.spdo@gmail.com",
+  "passwordHashValue": "358af81c50e54be08d4b1102656fc836a6e4446a",
+  "isDeleted": 0
+}
