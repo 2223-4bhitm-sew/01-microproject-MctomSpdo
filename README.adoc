@@ -1,0 +1,46 @@
+= Microprojekt Rezeptseite
+Thomas Spindler
+1.0.0, {docdate}
+ifndef::imagesdir[:imagesdir: images]
+:icons: font
+:sectnums:
+:experimental:
+ifdef::env-github[]
+:tip-caption: 💡
+endif::[]
+
+== Introduction
+
+A simple web based platform for sharing and looking up recipes
+
+Cook what you want, based on what you got!
+
+== Overall Information
+
+* Team members: Thomas Spindler
+* Class: 4BHITM
+* Year: 2022/23
+
+https://github.com/2223-4bhitm-sew/01-microproject-MctomSpdo[Github Repository] +
+https://2223-4bhitm-sew.github.io/01-microproject-MctomSpdo/[Doc]
+
+== Changelog
+
+=== 2022-11-14
+
+* Replace README.md with README.adoc
+
+=== 2022-11-12
+
+* Created JPA Entity User with Requests and Database in branch https://github.com/2223-4bhitm-sew/01-microproject-MctomSpdo/tree/feature/JPA[Feature/JPA]
+
+=== Older
+
+* Older Information is not included in this changelog
+
+== Technologies used:
+
+* Quarkus
+* Java
+* Asciidoc
+* Github
