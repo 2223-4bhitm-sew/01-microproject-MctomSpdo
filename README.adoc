@@ -1,4 +1,4 @@
-= Microprojekt Rezeptseite
+= Microprojekt Recipe Page
 Thomas Spindler
 1.0.0, {docdate}
 ifndef::imagesdir[:imagesdir: images]
