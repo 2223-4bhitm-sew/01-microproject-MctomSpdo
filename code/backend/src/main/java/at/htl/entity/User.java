@@ -3,8 +3,22 @@ package at.htl.entity;
 import javax.persistence.*;
 import java.util.Objects;
 
+@NamedQueries({
+        @NamedQuery(
+                name = "User.findAll",
+                query = "select u from User u"
+        ),
+        @NamedQuery(
+                name = "User.findByUserName",
+                query = "select u from User u where u.username like :NAME"
+        ),
+        @NamedQuery(
+                name = "User.findByEmail",
+                query = "select u from User u where u.email like :EMAIL"
+        )
+})
 @Entity
-@Table(name = "USER")
+@Table(name = "PLATFORM_USER")
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="USER_ID")
