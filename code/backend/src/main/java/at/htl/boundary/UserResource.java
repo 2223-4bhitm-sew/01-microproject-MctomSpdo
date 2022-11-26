@@ -1,7 +1,9 @@
 package at.htl.boundary;
 
+import at.htl.control.UserMapper;
 import at.htl.control.UserRepository;
 import at.htl.entity.User;
+import at.htl.entity.UserDTO;
 import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
@@ -24,10 +26,18 @@ public class UserResource {
     @Inject
     UserRepository userRepository;
 
+    @Inject
+    UserMapper userMapper;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> findAll() {
-        return userRepository.findAll();
+    public List<UserDTO> findAll() {
+        var list = userRepository.findAll();
+        var dtoList = new LinkedList<UserDTO>();
+
+        list.forEach((user -> dtoList.add(userMapper.UserToDTO(user))));
+
+        return dtoList;
     }
 
     @GET

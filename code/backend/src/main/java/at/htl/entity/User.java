@@ -46,6 +46,10 @@ public class User {
     @Column(name = "USER_DELETED")
     private int isDeleted;
 
+    public User() {
+
+    }
+
     public User(long id, String username, String desc, String gender, String profilePicturePath, String email, String passwordHashValue, int isDeleted) {
         this.id = id;
         this.username = username;
@@ -55,10 +59,6 @@ public class User {
         this.email = email;
         this.passwordHashValue = passwordHashValue;
         this.isDeleted = isDeleted;
-    }
-
-    public User() {
-
     }
 
     //<editor-fold desc="Getter and Setter">
