@@ -1,0 +1,15 @@
+GET http://localhost:8080/api/recipe
+
+###
+
+POST http://localhost:8080/api/recipe
+Content-Type: application/json
+
+{
+  "imagePath" : "img",
+  "title" : "TomatenSaft",
+  "desc": "Einfach Tomaten in den Mixer geben und fertig",
+  "created" : "",
+  "from": 1,
+  "isDeleted": "false"
+}
