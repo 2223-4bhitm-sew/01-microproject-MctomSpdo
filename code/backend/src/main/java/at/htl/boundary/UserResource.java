@@ -33,38 +33,43 @@ public class UserResource {
     @Produces(MediaType.APPLICATION_JSON)
     public List<UserDTO> findAll() {
         var list = userRepository.findAll();
-        var dtoList = new LinkedList<UserDTO>();
 
-        list.forEach((user -> dtoList.add(userMapper.UserToDTO(user))));
-
-        return dtoList;
+        return list.stream()
+                .map((user -> userMapper.UserToDTO(user)))
+                .toList();
     }
 
     @GET
     @Path("{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public User findById(
+    public UserDTO findById(
             @PathParam("id") long id
     ) {
-        return userRepository.findById(id);
+        return userMapper.UserToDTO(userRepository.findById(id));
     }
 
     @GET
     @Path("username")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> findById(
+    public List<UserDTO> findById(
             @QueryParam("username") String username
     ) {
-        return userRepository.findByUserName(username);
+        return userRepository.findByUserName(username)
+                .stream()
+                .map((user -> userMapper.UserToDTO(user)))
+                .toList();
     }
 
     @GET
     @Path("email")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<User> findByEmail(
+    public List<UserDTO> findByEmail(
             @QueryParam("email") String email
     ) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email)
+                .stream()
+                .map((user -> userMapper.UserToDTO(user)))
+                .toList();
     }
 
     @POST
